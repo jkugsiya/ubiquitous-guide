@@ -16,3 +16,7 @@ app.post('/', (req, res) => {
     moment: moment(date).toDate()
   })
 })
+
+app.listen(3000, () => {
+  console.log('Server listening on port 3000')
+})
