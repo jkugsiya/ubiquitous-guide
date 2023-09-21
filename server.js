@@ -18,6 +18,7 @@ app.post('/', (req, res) => {
   console.log(date, moment(date))
   res.send({
     date,
+    utc: moment.utc(date).toDate(),
     moment: moment(date).toDate()
   })
 })
