@@ -1,7 +1,12 @@
 const express = require('express')
+const dotenv = require('dotenv')
+const moment = require('moment')
+dotenv.config()
 
 const app = express()
 app.use(express.json())
+
+const PORT = +process.env.PORT || 9000
 
 app.get('/', (_, res) => {
   res.send('Hello World')
@@ -17,6 +22,6 @@ app.post('/', (req, res) => {
   })
 })
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000')
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`)
 })
