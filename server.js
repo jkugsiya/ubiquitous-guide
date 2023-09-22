@@ -31,7 +31,7 @@ const User = sequelize.define('user', {
   serverCalculatedClientDate: DataTypes.DATE
 })
 
-sequelize.sync()
+sequelize.sync({ force: true })
 
 app.get('/users', async (_, res) => {
   res.send(await User.findAll())
@@ -45,7 +45,7 @@ app.post('/users', async (req, res) => {
     name,
     email,
     date,
-    serverCalculatedDate: moment().startOf('day').toDate(),
+    serverCalculatedDate: moment(date).startOf('day').toDate(),
     serverCalculatedClientDate: moment(date)
       .utcOffset(timezone)
       .startOf('day')
