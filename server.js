@@ -46,10 +46,7 @@ app.post('/users', async (req, res) => {
     email,
     date,
     serverCalculatedDate: moment(date).startOf('day').toDate(),
-    serverCalculatedClientDate: moment(date)
-      .utcOffset(timezone)
-      .startOf('day')
-      .toDate()
+    serverCalculatedClientDate: moment(date).utcOffset(timezone)
   })
   res.send(user)
 })
